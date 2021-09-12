@@ -1,0 +1,21 @@
+CREATE TABLE [REPORTING].[DIM_PRODUKT] (
+    [ABNNAME]               NVARCHAR (255)  NOT NULL,
+    [PRODUCT_ID]            INT             NULL,
+    [PRODUCT_NAME]          NVARCHAR (255)  NULL,
+    [PRODUCT_ONETIME_PRICE] DECIMAL (10, 2) NULL,
+    [PRODUCT_ONGOING_PRICE] DECIMAL (10, 2) NULL,
+    [PRODUCT_GROUP]         NVARCHAR (255)  NULL,
+    [ABN_ID]                BIGINT          NULL,
+    [ABN_NAME]              NVARCHAR (40)   NULL,
+    [ABN_PRIS]              DECIMAL (10, 2) NULL,
+    [ABN_GROUP]             NVARCHAR (50)   NULL,
+    [SIP_ID]                BIGINT          NULL,
+    [SIP_NAME]              NVARCHAR (40)   NULL,
+    [SIP_GROUP]             NVARCHAR (50)   NULL,
+    CONSTRAINT [PK_DIM_PRODUKT] PRIMARY KEY CLUSTERED ([ABNNAME] ASC),
+    CONSTRAINT [DIMPRODUKTUK] UNIQUE NONCLUSTERED ([ABNNAME] ASC)
+);
+
+
+GO
+

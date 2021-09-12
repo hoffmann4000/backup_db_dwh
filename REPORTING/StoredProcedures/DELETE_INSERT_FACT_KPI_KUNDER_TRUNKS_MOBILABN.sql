@@ -1,0 +1,66 @@
+CREATE PROCEDURE [REPORTING].[DELETE_INSERT_FACT_KPI_KUNDER_TRUNKS_MOBILABN]
+AS 
+BEGIN
+
+IF OBJECT_ID('REPORTING.FACT_KPI', 'U') IS NOT NULL 
+
+PRINT('Eksisterende data slettes i FACT_KPI for de tre KPIer');
+
+	DELETE FROM REPORTING.FACT_KPI WHERE KPI_ID=(SELECT KPI_ID FROM REPORTING.DIM_KPI WHERE KPI_NAVN='Antal trunks');
+	DELETE FROM REPORTING.FACT_KPI WHERE KPI_ID=(SELECT KPI_ID FROM REPORTING.DIM_KPI WHERE KPI_NAVN='Antal mobil abonnenter');
+	DELETE FROM REPORTING.FACT_KPI WHERE KPI_ID=(SELECT KPI_ID FROM REPORTING.DIM_KPI WHERE KPI_NAVN='Antal kunder');
+	
+PRINT('KPI "Antal trunks" indsættes i FACT_KPI');
+	INSERT INTO REPORTING.FACT_KPI (REALISERET, FORHANDLER_ID, DATE_ID, KPI_ID)
+	
+	SELECT 
+	TRUNKNUMBER AS REALISERET, F_ID AS FORHANDLER_ID, RDATE AS DATE_ID, 
+	(SELECT KPI_ID FROM REPORTING.DIM_KPI WHERE KPI_NAVN='Antal trunks') AS KPI_ID
+	
+	FROM ADMIN.CUSTSTATS CS
+	INNER JOIN BASELINE.LASTDAYOFMONTH_ONE_YEAR_BACK D ON CS.RDATE=D.LASTDAYOFMONTH;
+
+PRINT('KPI "Antal kunder" indsættes i FACT_KPI');
+
+	INSERT INTO REPORTING.FACT_KPI (REALISERET, FORHANDLER_ID, DATE_ID, KPI_ID)
+	
+	SELECT 
+	CUSTNUMBER AS REALISERET, F_ID AS FORHANDLER_ID, RDATE AS DATE_ID, 
+	(SELECT KPI_ID FROM REPORTING.DIM_KPI WHERE KPI_NAVN='Antal kunder') AS KPI_ID
+	
+	FROM ADMIN.CUSTSTATS CS
+	INNER JOIN BASELINE.LASTDAYOFMONTH_ONE_YEAR_BACK D ON CS.RDATE=D.LASTDAYOFMONTH;
+	
+PRINT('KPI "Antal mobilabonnementer" indsættes i FACT_KPI');
+
+	INSERT INTO REPORTING.FACT_KPI (REALISERET, FORHANDLER_ID, DATE_ID, KPI_ID)
+	
+	SELECT 
+	MOBILNUMBER AS REALISERET, F_ID AS FORHANDLER_ID, RDATE AS DATE_ID, 
+	(SELECT KPI_ID FROM REPORTING.DIM_KPI WHERE KPI_NAVN like 'Antal mobil abonnenter') AS KPI_ID
+	
+	FROM ADMIN.CUSTSTATS CS
+	INNER JOIN BASELINE.LASTDAYOFMONTH_ONE_YEAR_BACK D ON CS.RDATE=D.LASTDAYOFMONTH;
+/*
+Datakilden er admin.custstats, som hver dag populeres ved hjæp af nedenstående SQL. 
+Datakilden er valgt fordi den 10 års historik som tabellen indeholder ikke kan opbygges bagudrettet i DWH
+
+REPLACE INTO custstats (f_id,rdate,custnumber,trunknumber, mobilnumber) (
+            SELECT 
+                f.f_id,
+                CURRENT_DATE() as rdate,
+                COUNT(DISTINCT c.custid) AS custnumber, 
+                COUNT(DISTINCT t.username) AS trunknumber, 
+                COUNT(DISTINCT m.did) AS mobilenumber
+            FROM forhandlere f
+            INNER JOIN cust c ON c.forhandlerid = f.f_id
+            LEFT JOIN trunk t ON t.cust = c.custid
+            LEFT JOIN mobil_abn m ON m.cust = c.custid AND m.status = 3
+            WHERE c.active = 1
+            GROUP BY f.f_id
+            )
+*/
+END;
+
+GO
+

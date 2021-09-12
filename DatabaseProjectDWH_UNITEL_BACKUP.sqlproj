@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>DatabaseProjectDWH_UNITEL_BACKUP</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{5D565773-6A03-412F-8939-197036703465}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>DatabaseProjectDWH_UNITEL_BACKUP</RootNamespace>
+    <AssemblyName>DatabaseProjectDWH_UNITEL_BACKUP</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(NetCoreBuild)' == 'true'" Project="$(NETCoreTargetsPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(NetCoreBuild)' != 'true' AND '$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(NetCoreBuild)' != 'true' AND '$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <PackageReference Condition="'$(NetCoreBuild)' == 'true'" Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="web_onenumberdk\" />
+    <Folder Include="web_onenumberdk\Tables\" />
+    <Folder Include="web_oneconnectdk\" />
+    <Folder Include="web_oneconnectdk\Tables\" />
+    <Folder Include="web_cloudconnectiondk\" />
+    <Folder Include="web_cloudconnectiondk\Tables\" />
+    <Folder Include="statistics\" />
+    <Folder Include="statistics\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="REPORTING\" />
+    <Folder Include="REPORTING\Views\" />
+    <Folder Include="REPORTING\Tables\" />
+    <Folder Include="REPORTING\StoredProcedures\" />
+    <Folder Include="rating\" />
+    <Folder Include="rating\Tables\" />
+    <Folder Include="radius\" />
+    <Folder Include="radius\Tables\" />
+    <Folder Include="navision\" />
+    <Folder Include="navision\Tables\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\StoredProcedures\" />
+    <Folder Include="BASELINE\" />
+    <Folder Include="BASELINE\Views\" />
+    <Folder Include="BASELINE\Tables\" />
+    <Folder Include="BASELINE\StoredProcedures\" />
+    <Folder Include="BASELINE\Functions\" />
+    <Folder Include="analyser\" />
+    <Folder Include="analyser\Views\" />
+    <Folder Include="admin\" />
+    <Folder Include="admin\Tables\" />
+  </ItemGroup>
+  <Target Name="BeforeBuild">
+    <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
+  </Target>
+  <ItemGroup>
+    <Build Include="web_onenumberdk\Tables\user_setting_type.sql" />
+    <Build Include="web_onenumberdk\Tables\user_settings.sql" />
+    <Build Include="web_onenumberdk\Tables\user_profile_activation_failure.sql" />
+    <Build Include="web_onenumberdk\Tables\user_profile_activations.sql" />
+    <Build Include="web_onenumberdk\Tables\user_profile.sql" />
+    <Build Include="web_onenumberdk\Tables\user_pbx_rel.sql" />
+    <Build Include="web_onenumberdk\Tables\user.sql" />
+    <Build Include="web_onenumberdk\Tables\texts.sql" />
+    <Build Include="web_onenumberdk\Tables\soundfile.sql" />
+    <Build Include="web_onenumberdk\Tables\sipphone_provision_type.sql" />
+    <Build Include="web_onenumberdk\Tables\sipphone_keytype.sql" />
+    <Build Include="web_onenumberdk\Tables\sipphone_keys.sql" />
+    <Build Include="web_onenumberdk\Tables\sipphonetype.sql" />
+    <Build Include="web_onenumberdk\Tables\settings.sql" />
+    <Build Include="web_onenumberdk\Tables\queue_member.sql" />
+    <Build Include="web_onenumberdk\Tables\queue_comfort_files.sql" />
+    <Build Include="web_onenumberdk\Tables\queue.sql" />
+    <Build Include="web_onenumberdk\Tables\permission_rel.sql" />
+    <Build Include="web_onenumberdk\Tables\permission.sql" />
+    <Build Include="web_onenumberdk\Tables\pbx_setting_type.sql" />
+    <Build Include="web_onenumberdk\Tables\pbx_settings.sql" />
+    <Build Include="web_onenumberdk\Tables\pbx.sql" />
+    <Build Include="web_onenumberdk\Tables\partner_history.sql" />
+    <Build Include="web_onenumberdk\Tables\partner.sql" />
+    <Build Include="web_onenumberdk\Tables\outgoing_trunk.sql" />
+    <Build Include="web_onenumberdk\Tables\number_rel.sql" />
+    <Build Include="web_onenumberdk\Tables\number.sql" />
+    <Build Include="web_onenumberdk\Tables\moh_file.sql" />
+    <Build Include="web_onenumberdk\Tables\moh.sql" />
+    <Build Include="web_onenumberdk\Tables\location_log.sql" />
+    <Build Include="web_onenumberdk\Tables\language.sql" />
+    <Build Include="web_onenumberdk\Tables\holiday_group_rel.sql" />
+    <Build Include="web_onenumberdk\Tables\holiday_group.sql" />
+    <Build Include="web_onenumberdk\Tables\holiday_date.sql" />
+    <Build Include="web_onenumberdk\Tables\flow_options.sql" />
+    <Build Include="web_onenumberdk\Tables\external_users.sql" />
+    <Build Include="web_onenumberdk\Tables\department_rel.sql" />
+    <Build Include="web_onenumberdk\Tables\department.sql" />
+    <Build Include="web_onenumberdk\Tables\dashboard_usage.sql" />
+    <Build Include="web_onenumberdk\Tables\dashboard_favorites.sql" />
+    <Build Include="web_onenumberdk\Tables\dashboard.sql" />
+    <Build Include="web_onenumberdk\Tables\asterisk.sql" />
+    <Build Include="web_oneconnectdk\Tables\user_setting_type.sql" />
+    <Build Include="web_oneconnectdk\Tables\user_settings.sql" />
+    <Build Include="web_oneconnectdk\Tables\user_profile_activation_failure.sql" />
+    <Build Include="web_oneconnectdk\Tables\user_profile_activations.sql" />
+    <Build Include="web_oneconnectdk\Tables\user_profile.sql" />
+    <Build Include="web_oneconnectdk\Tables\user_pbx_rel.sql" />
+    <Build Include="web_oneconnectdk\Tables\user.sql" />
+    <Build Include="web_oneconnectdk\Tables\texts.sql" />
+    <Build Include="web_oneconnectdk\Tables\soundfile.sql" />
+    <Build Include="web_oneconnectdk\Tables\sipphone_provision_type.sql" />
+    <Build Include="web_oneconnectdk\Tables\sipphone_keytype.sql" />
+    <Build Include="web_oneconnectdk\Tables\sipphone_keys.sql" />
+    <Build Include="web_oneconnectdk\Tables\sipphonetype.sql" />
+    <Build Include="web_oneconnectdk\Tables\settings.sql" />
+    <Build Include="web_oneconnectdk\Tables\queue_member.sql" />
+    <Build Include="web_oneconnectdk\Tables\queue_comfort_files.sql" />
+    <Build Include="web_oneconnectdk\Tables\queue.sql" />
+    <Build Include="web_oneconnectdk\Tables\permission_rel.sql" />
+    <Build Include="web_oneconnectdk\Tables\permission.sql" />
+    <Build Include="web_oneconnectdk\Tables\pbx_setting_type.sql" />
+    <Build Include="web_oneconnectdk\Tables\pbx_settings.sql" />
+    <Build Include="web_oneconnectdk\Tables\pbx.sql" />
+    <Build Include="web_oneconnectdk\Tables\partner_history.sql" />
+    <Build Include="web_oneconnectdk\Tables\partner.sql" />
+    <Build Include="web_oneconnectdk\Tables\outgoing_trunk.sql" />
+    <Build Include="web_oneconnectdk\Tables\number_rel.sql" />
+    <Build Include="web_oneconnectdk\Tables\number.sql" />
+    <Build Include="web_oneconnectdk\Tables\moh_file.sql" />
+    <Build Include="web_oneconnectdk\Tables\moh.sql" />
+    <Build Include="web_oneconnectdk\Tables\language.sql" />
+    <Build Include="web_oneconnectdk\Tables\holiday_group_rel.sql" />
+    <Build Include="web_oneconnectdk\Tables\holiday_group.sql" />
+    <Build Include="web_oneconnectdk\Tables\holiday_date.sql" />
+    <Build Include="web_oneconnectdk\Tables\flow_options.sql" />
+    <Build Include="web_oneconnectdk\Tables\external_users.sql" />
+    <Build Include="web_oneconnectdk\Tables\department_rel.sql" />
+    <Build Include="web_oneconnectdk\Tables\department.sql" />
+    <Build Include="web_oneconnectdk\Tables\dashboard_usage.sql" />
+    <Build Include="web_oneconnectdk\Tables\dashboard_favorites.sql" />
+    <Build Include="web_oneconnectdk\Tables\dashboard.sql" />
+    <Build Include="web_oneconnectdk\Tables\asterisk.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\user_setting_type.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\user_settings.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\user_profile_activation_failure.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\user_profile_activations.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\user_profile.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\user_pbx_rel.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\user.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\texts.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\soundfile.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\sipphone_provision_type.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\sipphone_keytype.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\sipphone_keys.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\sipphonetype.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\settings.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\queue_member.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\queue_comfort_files.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\queue.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\permission_rel.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\permission.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\pbx_setting_type.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\pbx_settings.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\pbx.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\partner_history.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\partner.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\outgoing_trunk.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\number_rel.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\number.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\moh_file.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\moh.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\location_log.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\language.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\holiday_group_rel.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\holiday_group.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\holiday_date.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\flow_options.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\external_users.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\department_rel.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\department.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\dashboard_usage.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\dashboard_favorites.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\dashboard.sql" />
+    <Build Include="web_cloudconnectiondk\Tables\asterisk.sql" />
+    <Build Include="statistics\Tables\hpbx_stats.sql" />
+    <Build Include="Security\web_onenumberdk.sql" />
+    <Build Include="Security\web_oneconnectdk.sql" />
+    <Build Include="Security\web_cloudconnectiondk.sql" />
+    <Build Include="Security\statistik_1.sql" />
+    <Build Include="Security\statistik.sql" />
+    <Build Include="Security\statistics.sql" />
+    <Build Include="Security\REPORTING.sql" />
+    <Build Include="Security\rating.sql" />
+    <Build Include="Security\radius.sql" />
+    <Build Include="Security\navision.sql" />
+    <Build Include="Security\db_forhandlerstatistik.sql" />
+    <Build Include="Security\BASELINE.sql" />
+    <Build Include="Security\analyser.sql" />
+    <Build Include="Security\admin.sql" />
+    <Build Include="Security\20210217.sql" />
+    <Build Include="REPORTING\Views\FACT_KPI_V.sql" />
+    <Build Include="REPORTING\Views\AFGANG_TILGANG_V.sql" />
+    <Build Include="REPORTING\Tables\TEST_LOOP.sql" />
+    <Build Include="REPORTING\Tables\FACT_OMSÆTNING.sql" />
+    <Build Include="REPORTING\Tables\FACT_MOBIL_OPKALD.sql" />
+    <Build Include="REPORTING\Tables\FACT_MOBIL_DATAFORBRUG.sql" />
+    <Build Include="REPORTING\Tables\FACT_KPI.sql" />
+    <Build Include="REPORTING\Tables\FACT_ABONNEMENT.sql" />
+    <Build Include="REPORTING\Tables\DIM_TRUNK.sql" />
+    <Build Include="REPORTING\Tables\DIM_RESSOURCEGROUP.sql" />
+    <Build Include="REPORTING\Tables\DIM_PRODUKT.sql" />
+    <Build Include="REPORTING\Tables\DIM_OPERATOR.sql" />
+    <Build Include="REPORTING\Tables\DIM_KUNDE.sql" />
+    <Build Include="REPORTING\Tables\DIM_KPI.sql" />
+    <Build Include="REPORTING\Tables\DIM_INVOICEGROUP.sql" />
+    <Build Include="REPORTING\Tables\DIM_DATO.sql" />
+    <Build Include="REPORTING\Tables\DIM_ABONNEMENT.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_FACT_OMSÆTNING.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_FACT_MOBIL_OPKALD.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_FACT_MOBIL_DATAFORBRUG.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_FACT_KPI_HPBX_SIP_BRUGERE.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_FACT_KPI_HPBX_PBX_BRUGERE.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_FACT_KPI_HPBX_MOBIL_BRUGERE.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_FACT_KPI_HPBX_INSTALLATIONER.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_FACT_ABONNOMENT.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_DIM_TRUNK.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_DIM_RESSOURCEGROUP.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_DIM_PRODUKT.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_DIM_OPERATOR.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_DIM_KUNDE.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_DIM_INVOICEGROUP.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_DIM_DATO.sql" />
+    <Build Include="REPORTING\StoredProcedures\UPDATE_DIM_ABONNEMENT.sql" />
+    <Build Include="REPORTING\StoredProcedures\SIMPEL_LOOP_INSERT.sql" />
+    <Build Include="REPORTING\StoredProcedures\DELETE_INSERT_FACT_KPI_TIL_OG_AFGANG_KUNDER.sql" />
+    <Build Include="REPORTING\StoredProcedures\DELETE_INSERT_FACT_KPI_OMSÆTNING.sql" />
+    <Build Include="REPORTING\StoredProcedures\DELETE_INSERT_FACT_KPI_KUNDER_TRUNKS_MOBILABN.sql" />
+    <Build Include="rating\Tables\udlandspriser.sql" />
+    <Build Include="rating\Tables\sip_used_group.sql" />
+    <Build Include="rating\Tables\sip_stat.sql" />
+    <Build Include="rating\Tables\sip_destinations.sql" />
+    <Build Include="rating\Tables\sip_destgroup.sql" />
+    <Build Include="rating\Tables\sip_abn_rel.sql" />
+    <Build Include="rating\Tables\sip_abn_group.sql" />
+    <Build Include="rating\Tables\sip_abn.sql" />
+    <Build Include="rating\Tables\product_properties.sql" />
+    <Build Include="rating\Tables\product_categories.sql" />
+    <Build Include="rating\Tables\products_price_range.sql" />
+    <Build Include="rating\Tables\products_history.sql" />
+    <Build Include="rating\Tables\products.sql" />
+    <Build Include="rating\Tables\plmnid.sql" />
+    <Build Include="rating\Tables\operators.sql" />
+    <Build Include="rating\Tables\mob_used_group.sql" />
+    <Build Include="rating\Tables\mob_stat.sql" />
+    <Build Include="rating\Tables\mob_destinations.sql" />
+    <Build Include="rating\Tables\mob_destgroup.sql" />
+    <Build Include="rating\Tables\mob_abn_rel.sql" />
+    <Build Include="rating\Tables\mob_abn_group.sql" />
+    <Build Include="rating\Tables\mob_abn.sql" />
+    <Build Include="rating\Tables\lcr.sql" />
+    <Build Include="rating\Tables\invoice_group.sql" />
+    <Build Include="radius\Tables\sms_jan_2021.sql" />
+    <Build Include="radius\Tables\mob_data_summarized_backup.sql" />
+    <Build Include="radius\Tables\mob_data_summarized.sql" />
+    <Build Include="radius\Tables\mob_cdr_summarized_backup.sql" />
+    <Build Include="radius\Tables\mob_cdr_summarized.sql" />
+    <Build Include="navision\Tables\Uni-tel_AS_Resource.sql" />
+    <Build Include="navision\Tables\Uni-tel_AS_Invoice_line.sql" />
+    <Build Include="navision\Tables\DataLakeCVR.sql" />
+    <Build Include="dbo\Tables\WriteLines2.sql" />
+    <Build Include="dbo\Tables\test.sql" />
+    <Build Include="dbo\StoredProcedures\TruncateTable.sql" />
+    <Build Include="BASELINE\Views\TRUNK_V.sql" />
+    <Build Include="BASELINE\Views\PRODUKT_V.sql" />
+    <Build Include="BASELINE\Views\OPERATØR_V.sql" />
+    <Build Include="BASELINE\Views\MOBIL_EXTRA_DATA_PIVOT.sql" />
+    <Build Include="BASELINE\Views\LASTDAYOFMONTH_ONE_YEAR_BACK.sql" />
+    <Build Include="BASELINE\Views\KUNDE_V.sql" />
+    <Build Include="BASELINE\Views\INVOICEGROUP_V.sql" />
+    <Build Include="BASELINE\Views\HPBX_STATS_TODAY_V.sql" />
+    <Build Include="BASELINE\Views\FORRIGE_INDEVARENDE_FINANSAAR_V.sql" />
+    <Build Include="BASELINE\Views\FORHANDLER_HOVEDKONTOR_V.sql" />
+    <Build Include="BASELINE\Views\FACT_OMSÆTNING_V.sql" />
+    <Build Include="BASELINE\Views\FACT_MOBIL_OPKALD_V.sql" />
+    <Build Include="BASELINE\Views\FACT_MOBIL_DATA_V.sql" />
+    <Build Include="BASELINE\Views\DIM_RESSOURCEGROUP_V.sql" />
+    <Build Include="BASELINE\Views\CHURN_V.sql" />
+    <Build Include="BASELINE\Views\ABONNOMENT_V.sql" />
+    <Build Include="BASELINE\Views\ABONNOMENTER_PR_MND_V.sql" />
+    <Build Include="BASELINE\Tables\udvalgte_cvr_data.sql" />
+    <Build Include="BASELINE\Tables\TELESERVICECODE.sql" />
+    <Build Include="BASELINE\Tables\HPBX_STATS.sql" />
+    <Build Include="BASELINE\Tables\DIM_DATO.sql" />
+    <Build Include="BASELINE\Tables\cvr_data.sql" />
+    <Build Include="BASELINE\StoredProcedures\HPBX_STATS_DAGLIGT_LOAD.sql" />
+    <Build Include="BASELINE\StoredProcedures\HISTORISK_LOAD_HBPX_STATS.sql" />
+    <Build Include="BASELINE\StoredProcedures\CREATE_DIM_DATO.sql" />
+    <Build Include="BASELINE\Functions\ANTAL_TILBUD_F.sql" />
+    <Build Include="BASELINE\Functions\ANTAL_KUNDER_TOTAL_F.sql" />
+    <Build Include="BASELINE\Functions\ANTAL_CHURNEDE_KUNDER_F.sql" />
+    <Build Include="analyser\Views\OPKALD_MED_LAENGDE_V.sql" />
+    <Build Include="analyser\Views\DATADOWNLOAD_V.sql" />
+    <Build Include="admin\Tables\turnover.sql" />
+    <Build Include="admin\Tables\trunksettings.sql" />
+    <Build Include="admin\Tables\trunkdids.sql" />
+    <Build Include="admin\Tables\trunk.sql" />
+    <Build Include="admin\Tables\template_setting.sql" />
+    <Build Include="admin\Tables\telenor_vm_pool.sql" />
+    <Build Include="admin\Tables\telenor_socs.sql" />
+    <Build Include="admin\Tables\telenor_main_offer_addon_offer_rel.sql" />
+    <Build Include="admin\Tables\telenor_main_offer.sql" />
+    <Build Include="admin\Tables\telenor_addon_offer_rel.sql" />
+    <Build Include="admin\Tables\telenor_addon_offer.sql" />
+    <Build Include="admin\Tables\telenorcsf.sql" />
+    <Build Include="admin\Tables\teams_virtual_sbcs.sql" />
+    <Build Include="admin\Tables\teams_logical_sbcs.sql" />
+    <Build Include="admin\Tables\tdc_volte_hlr_forwards.sql" />
+    <Build Include="admin\Tables\tdc_subabn_to_soc.sql" />
+    <Build Include="admin\Tables\tdc_fiber_offer.sql" />
+    <Build Include="admin\Tables\tdc_fiber.sql" />
+    <Build Include="admin\Tables\tdc_exclusion.sql" />
+    <Build Include="admin\Tables\tdc_datapackage_abn_rel.sql" />
+    <Build Include="admin\Tables\tdc_datapackage.sql" />
+    <Build Include="admin\Tables\tdc_adsl.sql" />
+    <Build Include="admin\Tables\tags.sql" />
+    <Build Include="admin\Tables\status.sql" />
+    <Build Include="admin\Tables\software_properties.sql" />
+    <Build Include="admin\Tables\software.sql" />
+    <Build Include="admin\Tables\sms_in.sql" />
+    <Build Include="admin\Tables\sipplatform.sql" />
+    <Build Include="admin\Tables\setting.sql" />
+    <Build Include="admin\Tables\selectboxvalues.sql" />
+    <Build Include="admin\Tables\salgskommentar.sql" />
+    <Build Include="admin\Tables\roaming_zone.sql" />
+    <Build Include="admin\Tables\product_forhandler_constraint.sql" />
+    <Build Include="admin\Tables\postnumre.sql" />
+    <Build Include="admin\Tables\postnr2komkode.sql" />
+    <Build Include="admin\Tables\pdf_template_field.sql" />
+    <Build Include="admin\Tables\numport.sql" />
+    <Build Include="admin\Tables\numbertypes.sql" />
+    <Build Include="admin\Tables\numberranges_status.sql" />
+    <Build Include="admin\Tables\mobil_subabn.sql" />
+    <Build Include="admin\Tables\mobil_extra_data.sql" />
+    <Build Include="admin\Tables\mobil_abn_substatus.sql" />
+    <Build Include="admin\Tables\mobil_abn_oprettelsesordrer_status.sql" />
+    <Build Include="admin\Tables\mobil_abn_oprettelsesordrer.sql" />
+    <Build Include="admin\Tables\mobil_abn_oprettelser.sql" />
+    <Build Include="admin\Tables\mobil_abn_old.sql" />
+    <Build Include="admin\Tables\mobil_abn_group_rel.sql" />
+    <Build Include="admin\Tables\mobil_abn_group.sql" />
+    <Build Include="admin\Tables\mobil_abn_deling_rel.sql" />
+    <Build Include="admin\Tables\mobil_abn_cap.sql" />
+    <Build Include="admin\Tables\mobil_abn.sql" />
+    <Build Include="admin\Tables\mobilsettings.sql" />
+    <Build Include="admin\Tables\link.sql" />
+    <Build Include="admin\Tables\kpi.sql" />
+    <Build Include="admin\Tables\kickback_sum.sql" />
+    <Build Include="admin\Tables\invoice_line.sql" />
+    <Build Include="admin\Tables\installation_address.sql" />
+    <Build Include="admin\Tables\icc_mobil_abn_rel.sql" />
+    <Build Include="admin\Tables\icc_forhandler_rel.sql" />
+    <Build Include="admin\Tables\icc_cust_rel.sql" />
+    <Build Include="admin\Tables\icctype.sql" />
+    <Build Include="admin\Tables\icc.sql" />
+    <Build Include="admin\Tables\global_settings.sql" />
+    <Build Include="admin\Tables\forhandler_specialprovision_note.sql" />
+    <Build Include="admin\Tables\forhandler_specialprovision.sql" />
+    <Build Include="admin\Tables\forhandler_products.sql" />
+    <Build Include="admin\Tables\forhandler_pdfinfo.sql" />
+    <Build Include="admin\Tables\forhandler_adresser.sql" />
+    <Build Include="admin\Tables\forhandlersettings.sql" />
+    <Build Include="admin\Tables\forhandlere.sql" />
+    <Build Include="admin\Tables\flatrate_limit.sql" />
+    <Build Include="admin\Tables\firmakald_group_rel.sql" />
+    <Build Include="admin\Tables\firmakald_group.sql" />
+    <Build Include="admin\Tables\fastip_types.sql" />
+    <Build Include="admin\Tables\fastip_forhandler_rel.sql" />
+    <Build Include="admin\Tables\fastip.sql" />
+    <Build Include="admin\Tables\fairusagepolicy.sql" />
+    <Build Include="admin\Tables\eventtype.sql" />
+    <Build Include="admin\Tables\eventstatus.sql" />
+    <Build Include="admin\Tables\email_sender.sql" />
+    <Build Include="admin\Tables\emails.sql" />
+    <Build Include="admin\Tables\did_routing.sql" />
+    <Build Include="admin\Tables\custstats.sql" />
+    <Build Include="admin\Tables\custsettings.sql" />
+    <Build Include="admin\Tables\customer_price.sql" />
+    <Build Include="admin\Tables\cust.sql" />
+    <Build Include="admin\Tables\country.sql" />
+    <Build Include="admin\Tables\contract_periods.sql" />
+    <Build Include="admin\Tables\churn.sql" />
+    <Build Include="admin\Tables\carrier.sql" />
+    <Build Include="admin\Tables\bulkmailtype.sql" />
+    <Build Include="admin\Tables\api_resource.sql" />
+    <Build Include="admin\Tables\api_key_owner.sql" />
+    <Build Include="admin\Tables\api_key_group.sql" />
+    <Build Include="admin\Tables\api_group_resource.sql" />
+    <Build Include="admin\Tables\api_group.sql" />
+    <Build Include="admin\Tables\alarmpoliti.sql" />
+    <Build Include="admin\Tables\adressevask.sql" />
+    <Build Include="admin\Tables\admin_tables_to_load.sql" />
+    <Build Include="admin\Tables\address_trunk_rel.sql" />
+    <Build Include="admin\Tables\address_trunkdid_rel.sql" />
+    <Build Include="admin\Tables\address_mobil_abn_rel.sql" />
+    <Build Include="admin\Tables\addressbook.sql" />
+    <Build Include="admin\Tables\address.sql" />
+    <Build Include="admin\Tables\abnsettings.sql" />
+    <Build Include="admin\Tables\abn.sql" />
+  </ItemGroup>
+</Project>

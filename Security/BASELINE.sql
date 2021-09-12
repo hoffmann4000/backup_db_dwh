@@ -1,0 +1,6 @@
+CREATE SCHEMA [BASELINE]
+    AUTHORIZATION [dbo];
+
+
+GO
+

@@ -1,0 +1,6 @@
+CREATE SCHEMA [20210217]
+    AUTHORIZATION [dbo];
+
+
+GO
+

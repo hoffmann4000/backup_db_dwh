@@ -1,0 +1,8 @@
+CREATE TABLE [REPORTING].[TEST_LOOP] (
+    [RK_NR] INT  NULL,
+    [DATO]  DATE NULL
+);
+
+
+GO
+
