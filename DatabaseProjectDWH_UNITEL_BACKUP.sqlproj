@@ -445,5 +445,6 @@
     <Build Include="admin\Tables\address.sql" />
     <Build Include="admin\Tables\abnsettings.sql" />
     <Build Include="admin\Tables\abn.sql" />
+    <Build Include="BASELINE\teste_view.sql" />
   </ItemGroup>
 </Project>
